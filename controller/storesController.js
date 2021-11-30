@@ -1,6 +1,6 @@
 const Store = require('../models/Store');
 
-exports.getAll = async (req, res, next) => {
+exports.getStores = async (req, res, next) => {
     try{
         const stores = await Store.find();
 
@@ -16,3 +16,19 @@ exports.getAll = async (req, res, next) => {
         res.status(500).json({ error: 'Server error' });
     }
 };
+
+exports.createStore = async (req, res, next) => {
+    try{
+        console.log(req.body)
+        const store = await Store.create(req.body);
+
+        res.status(201).json({
+            status: 'success',
+            data: store
+        })
+
+    }catch(err){
+        console.log(err);
+        res.status(500).json({ error: 'internal server error' });
+    }
+}

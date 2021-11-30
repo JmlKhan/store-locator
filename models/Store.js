@@ -5,6 +5,7 @@ const StoreSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a store ID'],
         trim: true,
+        unique: true,
         maxLength: [10, 'Store id must be less than 10 chars']
     },
     address: {
