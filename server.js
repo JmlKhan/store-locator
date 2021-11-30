@@ -3,10 +3,13 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const storesRouter = require('./routes/stores');
+const connectDB = require('./config/db');
 
 //load env vars
-  dotenv.config({path: './config/config.env'})
+dotenv.config({path: './config/config.env'})
  
+//connect to db
+connectDB();
 
 const app = express();
 
